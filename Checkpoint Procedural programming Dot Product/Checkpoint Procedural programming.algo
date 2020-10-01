@@ -1,0 +1,52 @@
+ALGORITHM Dot_product
+VAR
+    i,j:integer;
+    vect_1[i] : ARRAY_OF integer[i];
+    vect_2[i] : ARRAY_OF integer[i];
+    ps,n:  Integer;
+
+BEGIN
+
+ Procedure saisie (Var n:Integer);
+  Begin
+   Repeat
+      write('n= ');
+      Read(n);
+   Until (n=2) Or (n=3);
+ End;
+
+ Procedure remplir(vect_1 : ARRAY_OF INTEGER, n:Integer);
+ Var
+   i:  Integer;
+ Begin
+   For i:=1 To n Do
+      Begin
+         write('donner l''élement n',i,'= ');
+         Read(t[i]);
+      End;
+ End;
+
+ Function calculer_ps(vect_1 : ARRAY_OF INTEGER,vect_2: ARRAY_OF INTEGER , n:Integer):
+ Var
+   ps,i:  Integer;
+ Begin
+   ps := 0;
+   For i:=1 To n Do
+      ps := ps+vect_1[i]*vect_2[i];
+   calculer_ps := ps;
+ End;
+
+ Procedure afficher(ps:Integer);
+ Begin
+   If ps=0 Then Write('vect_1 et vect_2 sont orthogonaux')
+   Else Write('vect_1 et vect_2 ne sont pas orthogonaux');
+ End;
+
+ Begin
+   saisir(n);
+   remplir(vect_1,n);
+   remplir(vect_2,n);
+   ps := calculer_ps(vect_1,vect_2,n);
+   Write('Le produit scalaire est',ps);
+   afficher(ps);
+ End.
